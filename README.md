@@ -5,7 +5,7 @@
 ## 安装
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/new-aspect/cpk/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/new-aspect/cpk/master/install.sh | bash
 ```
 
 自动检测芯片型号，国内网络自动走镜像加速。

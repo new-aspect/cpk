@@ -5,10 +5,10 @@
 ## 安装
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/new-aspect/cpk/master/install.sh | bash
+bash <(curl -fsSL https://raw.githubusercontent.com/new-aspect/cpk/master/install.sh 2>/dev/null || curl -fsSL https://gh-proxy.com/https://raw.githubusercontent.com/new-aspect/cpk/master/install.sh)
 ```
 
-自动检测芯片型号，国内网络自动走镜像加速。
+自动检测芯片型号，国内网络自动走镜像加速。安装完成后打开一个新的终端窗口即可使用。
 
 ## 使用
 

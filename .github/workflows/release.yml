@@ -19,28 +19,28 @@ jobs:
 
       - name: Build binaries
         run: |
-          GOOS=darwin GOARCH=arm64 go build -ldflags "-X main.Version=${{ github.ref_name }}" -o cpack-darwin-arm64 .
-          GOOS=darwin GOARCH=amd64 go build -ldflags "-X main.Version=${{ github.ref_name }}" -o cpack-darwin-amd64 .
+          GOOS=darwin GOARCH=arm64 go build -ldflags "-X main.Version=${{ github.ref_name }}" -o cpk-darwin-arm64 .
+          GOOS=darwin GOARCH=amd64 go build -ldflags "-X main.Version=${{ github.ref_name }}" -o cpk-darwin-amd64 .
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            cpack-darwin-arm64
-            cpack-darwin-amd64
+            cpk-darwin-arm64
+            cpk-darwin-amd64
           body: |
             ## 安装
 
             **Apple Silicon (M1/M2/M3):**
             ```bash
-            sudo curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/cpack-darwin-arm64 -o /usr/local/bin/cpack
-            sudo chmod +x /usr/local/bin/cpack
-            cpack init
+            sudo curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/cpk-darwin-arm64 -o /usr/local/bin/cpk
+            sudo chmod +x /usr/local/bin/cpk
+            cpk init
             ```
 
             **Intel Mac:**
             ```bash
-            sudo curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/cpack-darwin-amd64 -o /usr/local/bin/cpack
-            sudo chmod +x /usr/local/bin/cpack
-            cpack init
+            sudo curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/cpk-darwin-amd64 -o /usr/local/bin/cpk
+            sudo chmod +x /usr/local/bin/cpk
+            cpk init
             ```

@@ -15,7 +15,7 @@ var dirBlacklist = map[string]bool{
 	".idea": true, ".vscode": true, ".gradle": true,
 	"coverage": true, "__pycache__": true, ".next": true,
 	"_libs": true, ".claude": true, ".gk": true,
-	".cpk-backup": true,
+	".cpack-backup": true,
 }
 
 // 第二层：扩展名白名单（只保留源代码）

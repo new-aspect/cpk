@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-const backupDir = ".cpk-backup"
+const backupDir = ".cpack-backup"
 
 func updateProject() error {
 	homeDir, err := os.UserHomeDir()
@@ -98,7 +98,7 @@ func updateProject() error {
 	fmt.Printf("   覆盖: %d 个文件\n", overwritten)
 	fmt.Printf("   新增: %d 个文件\n", added)
 	fmt.Printf("   备份: %s/\n", backupDir)
-	fmt.Printf("\n   如需还原: cpk rollback\n\n")
+	fmt.Printf("\n   如需还原: cpack rollback\n\n")
 
 	return nil
 }

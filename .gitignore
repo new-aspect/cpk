@@ -1,4 +1,4 @@
-cpack
-cpack-darwin-*
+cpk
+cpk-darwin-*
 *.zip
 .DS_Store

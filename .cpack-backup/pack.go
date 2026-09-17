@@ -64,7 +64,7 @@ func packProject() error {
 
 	// 创建 zip
 	homeDir, _ := os.UserHomeDir()
-	zipPath := filepath.Join(homeDir, "Desktop", fmt.Sprintf("cpk-%s.zip", projectName))
+	zipPath := filepath.Join(homeDir, "Desktop", fmt.Sprintf("cpack-%s.zip", projectName))
 
 	if err := writeZip(zipPath, projectDir, files, projectName, totalSize); err != nil {
 		return fmt.Errorf("打包失败: %w", err)
@@ -220,9 +220,9 @@ func collectDirs(root string, maxDepth int) []string {
 
 // ========== CPACK_FOR_CLAUDE.md ==========
 
-const claudeReadme = `# cpk 协作说明
+const claudeReadme = `# cpack 协作说明
 
-这是通过 cpk 工具打包的项目源代码，只包含源代码文件。
+这是通过 cpack 工具打包的项目源代码，只包含源代码文件。
 完整的项目结构和文件清单见 PROJECT_MAP.md。
 
 ## 给 Claude 的约定
@@ -236,5 +236,5 @@ const claudeReadme = `# cpk 协作说明
 3. 不要在 zip 外面套额外的文件夹
 4. 可以附一份 CHANGES.md 说明改了什么
 
-用户会在项目目录执行 cpk update，自动应用你的改动。
+用户会在项目目录执行 cpack update，自动应用你的改动。
 `

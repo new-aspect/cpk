@@ -31,7 +31,7 @@ func main() {
 			os.Exit(1)
 		}
 	case "version", "-v", "--version":
-		fmt.Printf("cpk %s\n", Version)
+		fmt.Printf("cpack %s\n", Version)
 	case "init":
 		if err := initCompletion(); err != nil {
 			fmt.Fprintf(os.Stderr, "❌ %s\n", err)
@@ -47,15 +47,15 @@ func main() {
 }
 
 func printUsage() {
-	fmt.Printf(`cpk %s — 项目压缩与协作工具
+	fmt.Printf(`cpack %s — 项目压缩与协作工具
 
 用法:
-  cpk              打包当前项目到桌面，弹出 Finder
-  cpk update       应用 ~/Downloads/ 中最新的改动包
-  cpk rollback     还原上次 update 的改动
-  cpk version      显示版本号
-  cpk init         安装 Tab 补全
-  cpk help         显示此帮助
+  cpack              打包当前项目到桌面，弹出 Finder
+  cpack update       应用 ~/Downloads/ 中最新的改动包
+  cpack rollback     还原上次 update 的改动
+  cpack version      显示版本号
+  cpack init         安装 Tab 补全
+  cpack help         显示此帮助
 
 `, Version)
 }
@@ -74,7 +74,7 @@ func initCompletion() error {
 	}
 
 	// 写入补全脚本
-	compFile := filepath.Join(compDir, "_cpk")
+	compFile := filepath.Join(compDir, "_cpack")
 	if err := os.WriteFile(compFile, []byte(zshCompletion), 0644); err != nil {
 		return fmt.Errorf("无法写入补全文件: %w", err)
 	}
@@ -98,7 +98,7 @@ func initCompletion() error {
 			return fmt.Errorf("无法写入 .zshrc: %w", err)
 		}
 		defer f.Close()
-		f.WriteString("\n# cpk Tab 补全\n")
+		f.WriteString("\n# cpack Tab 补全\n")
 		for _, line := range lines {
 			f.WriteString(line + "\n")
 		}
@@ -106,13 +106,13 @@ func initCompletion() error {
 
 	fmt.Printf("\n✅ Tab 补全已安装\n")
 	fmt.Printf("   执行一次: source ~/.zshrc\n")
-	fmt.Printf("   之后输入 cpk + Tab 即可补全子命令\n\n")
+	fmt.Printf("   之后输入 cpack + Tab 即可补全子命令\n\n")
 	return nil
 }
 
-const zshCompletion = `#compdef cpk
+const zshCompletion = `#compdef cpack
 
-_cpk() {
+_cpack() {
     local -a commands
     commands=(
         'update:应用 ~/Downloads/ 中最新的改动包'
@@ -124,5 +124,5 @@ _cpk() {
     _describe 'command' commands
 }
 
-compdef _cpk cpk
+compdef _cpack cpack
 `

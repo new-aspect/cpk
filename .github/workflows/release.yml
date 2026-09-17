@@ -30,5 +30,5 @@ jobs:
             cpk-darwin-amd64
           body: |
             ```bash
-            curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/master/install.sh | bash
+            bash <(curl -fsSL https://raw.githubusercontent.com/new-aspect/cpk/master/install.sh 2>/dev/null || curl -fsSL https://gh-proxy.com/https://raw.githubusercontent.com/new-aspect/cpk/master/install.sh)
             ```

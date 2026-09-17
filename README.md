@@ -5,28 +5,10 @@
 ## 安装
 
 ```bash
-brew tap new-aspect/tap
-brew install cpk
-cpk init && source ~/.zshrc
+curl -fsSL https://raw.githubusercontent.com/new-aspect/cpk/main/install.sh | bash
 ```
 
-没装 Homebrew？用 curl：
-
-```bash
-# Apple Silicon (M1/M2/M3)
-sudo curl -L https://github.com/new-aspect/cpk/releases/latest/download/cpk-darwin-arm64 -o /usr/local/bin/cpk
-sudo chmod +x /usr/local/bin/cpk
-cpk init && source ~/.zshrc
-```
-
-<details><summary>Intel Mac</summary>
-
-```bash
-sudo curl -L https://github.com/new-aspect/cpk/releases/latest/download/cpk-darwin-amd64 -o /usr/local/bin/cpk
-sudo chmod +x /usr/local/bin/cpk
-cpk init && source ~/.zshrc
-```
-</details>
+自动检测芯片型号，国内网络自动走镜像加速。
 
 ## 使用
 

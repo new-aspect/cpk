@@ -29,6 +29,18 @@ jobs:
             cpk-darwin-arm64
             cpk-darwin-amd64
           body: |
+            ## 安装
+
+            **Apple Silicon (M1/M2/M3):**
             ```bash
-            curl -fsSL https://raw.githubusercontent.com/${{ github.repository }}/main/install.sh | bash
+            sudo curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/cpk-darwin-arm64 -o /usr/local/bin/cpk
+            sudo chmod +x /usr/local/bin/cpk
+            cpk init
+            ```
+
+            **Intel Mac:**
+            ```bash
+            sudo curl -L https://github.com/${{ github.repository }}/releases/download/${{ github.ref_name }}/cpk-darwin-amd64 -o /usr/local/bin/cpk
+            sudo chmod +x /usr/local/bin/cpk
+            cpk init
             ```

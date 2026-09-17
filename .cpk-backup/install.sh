@@ -45,12 +45,11 @@ fi
 sudo mv "$TMP" /usr/local/bin/cpk
 sudo chmod +x /usr/local/bin/cpk
 
-# Tab 补全 + 清缓存
+# Tab 补全
 cpk init 2>/dev/null || true
-rm -f ~/.zcompdump*
 
 VER=$(cpk version 2>/dev/null || echo "cpk")
 echo ""
 echo "✅ ${VER} 已安装"
-echo "   打开一个新的终端窗口即可使用"
+echo "   执行一次: source ~/.zshrc"
 echo ""

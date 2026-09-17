@@ -104,9 +104,15 @@ func initCompletion() error {
 		}
 	}
 
+	// 清除 zsh 补全缓存
+	clearGlob := filepath.Join(homeDir, ".zcompdump*")
+	matches, _ := filepath.Glob(clearGlob)
+	for _, m := range matches {
+		os.Remove(m)
+	}
+
 	fmt.Printf("\n✅ Tab 补全已安装\n")
-	fmt.Printf("   执行一次: source ~/.zshrc\n")
-	fmt.Printf("   之后输入 cpk + Tab 即可补全子命令\n\n")
+	fmt.Printf("   打开一个新的终端窗口即可使用\n")
 	return nil
 }
 

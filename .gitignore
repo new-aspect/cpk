@@ -1,0 +1,4 @@
+cpack
+cpack-darwin-*
+*.zip
+.DS_Store

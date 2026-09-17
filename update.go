@@ -34,19 +34,15 @@ func updateProject() error {
 	}
 	defer r.Close()
 
-	// 检测并去掉可能的公共前缀目录（比如 Claude 打包时套了一层文件夹）
-	prefix := detectCommonPrefix(r.File)
-
 	var targets []zipTarget
 	for _, f := range r.File {
 		if f.FileInfo().IsDir() {
 			continue
 		}
-		name := strings.TrimPrefix(f.Name, prefix)
-		if name == "" {
+		if f.Name == "" {
 			continue
 		}
-		targets = append(targets, zipTarget{ZipEntry: f, DestPath: name})
+		targets = append(targets, zipTarget{ZipEntry: f, DestPath: f.Name})
 	}
 
 	if len(targets) == 0 {
@@ -136,7 +132,7 @@ func rollbackProject() error {
 
 type zipTarget struct {
 	ZipEntry *zip.File
-	DestPath string // 去掉公共前缀后的相对路径
+	DestPath string // zip 内的原始路径
 }
 
 // findLatestZip 在指定目录中找到最新的 .zip 文件
@@ -172,28 +168,6 @@ func findLatestZip(dir string) (string, error) {
 
 	sort.Slice(zips, func(i, j int) bool { return zips[i].modTime > zips[j].modTime })
 	return zips[0].path, nil
-}
-
-// detectCommonPrefix 检测 zip 里所有文件是否共享一个顶层目录前缀
-// 如果是（比如 "changes-xxx/"），返回该前缀以便去掉
-func detectCommonPrefix(files []*zip.File) string {
-	prefix := ""
-	for _, f := range files {
-		if f.FileInfo().IsDir() {
-			continue
-		}
-		parts := strings.SplitN(f.Name, "/", 2)
-		if len(parts) < 2 {
-			return "" // 有文件直接在根层，没有公共前缀
-		}
-		dir := parts[0] + "/"
-		if prefix == "" {
-			prefix = dir
-		} else if dir != prefix {
-			return "" // 不同的顶层目录
-		}
-	}
-	return prefix
 }
 
 func extractZipEntry(f *zip.File, destPath string) error {

@@ -234,7 +234,6 @@ const claudeReadme = `# cpk 协作说明
 2. zip 内的目录结构必须与项目一致
    例如改了 pkg/server/config.go → zip 里就是 pkg/server/config.go
 3. 不要在 zip 外面套额外的文件夹
-4. 可以附一份 CHANGES.md 说明改了什么
 
 用户会在项目目录执行 cpk update，自动应用你的改动。
 `

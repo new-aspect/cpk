@@ -2,3 +2,4 @@ cpk
 cpk-darwin-*
 *.zip
 .DS_Store
+.cpk-backup/

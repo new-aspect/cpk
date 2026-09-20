@@ -40,6 +40,8 @@ var extWhitelist = map[string]bool{
 	".svelte": true, ".vue": true, ".astro": true,
 	// Other
 	".md": true, ".graphql": true, ".proto": true, ".tf": true, ".hcl": true,
+	// EOS
+	".bizx": true,
 }
 
 // 特殊文件名（没有扩展名但应该包含）
